@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Little Universe ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 35%, #103b58, #071d32 55%, #020b18);
+  color: #dffaff;
+  font-family: 'Vazirmatn', sans-serif;
+  overflow-x: hidden;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 70% 20%, #67eaff, transparent),
+    radial-gradient(2px 2px at 40% 80%, white, transparent),
+    radial-gradient(2px 2px at 85% 65%, #67eaff, transparent);
+  background-size: 250px 250px;
+  animation: twinkle 4s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .3; }
+  to { opacity: 1; }
+}
+
+.page {
+  min-height: 100vh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 35px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.page.active {
+  display: flex;
+  animation: appear .8s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.moon {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  background: #b8f8ff;
+  box-shadow: 0 0 25px #39dfff,
+              0 0 65px #16bce9,
+              0 0 110px #087fa5;
+  margin-bottom: 45px;
+  position: relative;
+}
+
+.moon::after {
+  content: "";
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: #0b2942;
+  top: -12px;
+  left: 32px;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(34px, 7vw, 55px);
+  color: #a5f4ff;
+  text-shadow: 0 0 20px #20c9e8;
+  margin-bottom: 20px;
+  direction: ltr;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #c4eaf2;
+  margin-bottom: 35px;
+  line-height: 2;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.start-btn {
+  padding: 15px 38px;
+  border: 1px solid #75eaff;
+  border-radius: 35px;
+  background: linear-gradient(135deg, #087fa5, #20c9e8);
+  color: #031725;
+  font-size: 15px;
+  font-weight: 700;
+  transition: .3s;
+  direction: ltr;
+}
+
+.start-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 35px #20c9e8;
+}
+
+.section-title {
+  font-family: Georgia, serif;
+  color: #a5f4ff;
+  font-size: 35px;
+  direction: ltr;
+  margin-bottom: 10px;
+}
+
+.english-sub {
+  direction: ltr;
+  color: #a7dbe7;
+  font-family: Georgia, serif;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.cards {
+  width: 100%;
+  max-width: 490px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  border: 1px solid #167d99;
+  background: linear-gradient(135deg, #0c3149dd, #124b5acc);
+  border-radius: 18px;
+  text-align: right;
+  color: #e7fcff;
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #4de5f5;
+  box-shadow: 0 0 22px #20c9e844;
+}
+
+.card-icon {
+  font-size: 32px;
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-content h3 {
+  direction: ltr;
+  text-align: right;
+  color: #8ceeff;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.card-content p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: #d0eff5;
+}
+
+.arrow {
+  color: #4de5f5;
+  font-size: 22px;
+}
+
+.footer {
+  margin-top: 35px;
+  color: #9acbd9;
+  font-size: 11px;
+  line-height: 2.2;
+  max-width: 450px;
+}
+
+.back-btn {
+  border: 1px solid #318ca5;
+  border-radius: 25px;
+  background: transparent;
+  color: #b5f6ff;
+  padding: 9px 23px;
+  margin-top: 25px;
+}
+
+.content-box {
+  width: 100%;
+  max-width: 490px;
+  padding: 28px 20px;
+  border: 1px solid #167d99;
+  border-radius: 20px;
+  background: #0b2b42cc;
+  line-height: 2.2;
+}
+
+.content-box h2 {
+  color: #8ceeff;
+  margin-bottom: 18px;
+}
+
+.placeholder {
+  color: #a5dce8;
+  font-size: 14px;
+}
+
+@media(max-width: 500px) {
+  .moon {
+    width: 95px;
+    height: 95px;
+  }
+  .moon::after {
+    width: 85px;
+    height: 85px;
+    left: 25px;
+  }
+  .card {
+    padding: 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<!-- صفحه اول -->
+<section class="page active" id="home">
+
+  <div class="moon"></div>
+
+  <h1>Our Little Universe</h1>
+
+  <p class="subtitle" dir="ltr">
+    A universe made just for you ✨<br>
+    Somewhere between the stars, there is you.
+  </p>
+
+  <button class="start-btn" onclick="showPage('menu')">
+    Open My Heart ♡
+  </button>
+
+  <div class="footer" dir="ltr">
+    MADE WITH LOVE · JUST FOR YOU
+  </div>
+
+</section>
+
+<!-- صفحه انتخاب سه گزینه -->
+<section class="page" id="menu">
+
+  <h1 class="section-title">Choose Your Surprise</h1>
+
+  <p class="english-sub">
+    Three little pieces of my heart, just for you ♡
+  </p>
+
+  <div class="cards">
+
+    <button class="card" onclick="showPage('movie')">
+      <span class="card-icon">🎬</span>
+      <div class="card-content">
+        <h3>01 — Our Movie</h3>
+        <p>یک هدیه کوچک از طرف معین به زیباترین دختر روی زمین ❤️</p>
+      </div>
+      <span class="arrow">‹</span>
+    </button>
+
+    <button class="card" onclick="showPage('voice')">
+      <span class="card-icon">🎧</span>
+      <div class="card-content">
+        <h3>02 — My Voice</h3>
+        <p>چند کلمه از ته قلبم، با صدای خودم برای تو 🎧</p>
+      </div>
+      <span class="arrow">‹</span>
+    </button>
+
+    <button class="card" onclick="showPage('letter')">
+      <span class="card-icon">💌</span>
+      <div class="card-content">
+        <h3>03 — My Letter</h3>
+        <p>نامه‌ای پر از حرف‌های نگفته، مخصوص تو 💌</p>
+      </div>
+      <span class="arrow">‹</span>
+    </button>
+
+  </div>
+
+  <div class="footer">
+    <span dir="ltr">© Designed & Developed with love by Moein</span>
+    <br>
+    صفر تا صد طراحی و برنامه‌نویسی سایت و طراحی این تابلو توسط خودم انجام شده ❤️
+  </div>
+
+</section>
+
+<!-- صفحه فیلم -->
+<section class="page" id="movie">
+
+  <h1 class="section-title">Our Movie 🎬</h1>
+
+  
+<div class="content-box">
+    <h2>یک خاطره برای تو ❤️</h2>
+
+    <video
+        controls
+        playsinline
+        preload="metadata"
+        style="width: 100%; max-width: 700px; border-radius: 15px;">
+
+        <source src="./videos/birthday.mp4" type="video/mp4">
+
+        مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
+    </video>
+</div>
+
+  </div>
+
+  <button class="back-btn" onclick="showPage('menu')">
+    بازگشت به منو
+  </button>
+
+</section>
+
+<!-- صفحه ویس -->
+
+
+  <!-- صفحه ویس -->
+<section class="page" id="voice">
+
+  <h1 class="section-title">My Voice 🎧</h1>
+
+  <div class="content-box">
+    <h2>صدای قلب من برای تو ❤️</h2>
+
+    <p class="placeholder">
+      چند کلمه از ته قلبم، مخصوص تو...
+      <br>
+      این صدا فقط برای توئه ♡
+    </p>
+
+    <audio
+      controls
+      preload="metadata"
+      style="width:100%; margin-top:20px;">
+
+      <source src="./voice/voice.mp3" type="audio/mpeg">
+
+      مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
+    </audio>
+
+  </div>
+
+  <button class="back-btn" onclick="showPage('menu')">
+    بازگشت به منو
+  </button>
+
+</section>
+
+  <button class="back-btn" onclick="showPage('menu')">
+    بازگشت به منو
+  </button>
+
+</section>
+
+<!-- صفحه نامه -->
+<section class="page" id="letter">
+
+  <h1 class="section-title">My Letter 💌</h1>
+
+
+    <div class="content-box">
+    <h2>برای زیباترین دختر دنیا ❤️</h2>
+    <div id="letterContent" class="letter-text">
+        در حال باز کردن نامه عاشقانه...
+</div>
+  </div>
+
+  <button class="back-btn" onclick="showPage('menu')">
+    بازگشت به منو
+  </button>
+
+</section>
+
+<script>
+    
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  document.getElementById(pageId).classList.add('active');
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+fetch('./letter.txt')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Letter not found');
+        }
+        return response.text();
+    })
+    .then(text => {
+        document.getElementById('letterContent').innerText = text;
+    })
+    .catch(error => {
+        document.getElementById('letterContent').innerText =
+            'فعلاً امکان نمایش نامه وجود ندارد ❤️';
+    });
+
+</script>
+
+</body>
+</html>
